@@ -93,11 +93,17 @@
       "@commitlint/config-conventional"
     ]
   },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
     "@types/jest": "^25.1.4",
     "@types/node": "^13.9.0",
+    "@types/react": "^16.9.23",
+    "@types/react-dom": "^16.9.5",
     "colors": "^1.4.0",
     "commitizen": "^4.0.3",
     "coveralls": "^3.0.9",
@@ -111,6 +117,8 @@
     "parcel-bundler": "^1.12.4",
     "prettier": "^1.19.1",
     "prompt": "^1.0.0",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
     "replace-in-file": "^5.0.2",
     "rimraf": "^3.0.2",
     "rollup": "^2.0.2",
@@ -127,6 +135,7 @@
     "tslint": "^6.0.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-config-standard": "^9.0.0",
+    "tslint-react": "^4.2.0",
     "typedoc": "^0.16.11",
     "typescript": "^3.8.3"
   }
