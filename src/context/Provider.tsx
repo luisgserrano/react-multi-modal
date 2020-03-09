@@ -1,21 +1,7 @@
 import React from 'react';
 
-interface ComponentProps {
-  onCancel: Function;
-  hideModal: Function;
-}
-
-interface ProviderState {
-  component?: React.ReactType<ComponentProps>;
-  showModal: Function;
-  hideModal: Function;
-  modalProps: Object;
-}
-
-interface ShowModalParams {
-  component: React.ReactType<ComponentProps>;
-  modalProps: Object;
-}
+// Interfaces
+import { ComponentProps, ProviderState, ShowModalParams } from '../interfaces';
 
 export const ModalContext = React.createContext<ProviderState>({
   component: null,
