@@ -12,11 +12,11 @@ export const ModalContext = React.createContext<ProviderState>({
 
 class ModalProvider extends React.Component<{}, ProviderState> {
   /**
-   * The way to show the modal component is by passing the component to the context and manage the
-   * visible prop. This way we can have multiple components being rendered in the same page but
-   * only one rendered at the same time.
+   * By passing the component as parameter to the state of the context store, we can trigger a
+   * re-render and show in the modalRoot component that is a consumer of this store.
    *
-   * With this approach, the show and hide functions will only be related to the rendered component.
+   * With this approach, we can render multiple components in one place, one at the time, with only
+   * one function to manage the visibility of the modal, having multiple modals in one page.
    */
   showModal = ({ component, modalProps = {} }: ShowModalParams) => {
     this.setState({
@@ -30,7 +30,7 @@ class ModalProvider extends React.Component<{}, ProviderState> {
    * would render null on the leave state.
    *
    * Instead of setting the component state to null to hide the modal component, we change the
-   * visible prop so the modal implementation handle and animate the leave state.
+   * visible prop so the modal implementation handle and animate the leave state, if the user wants.
    */
   hideModal = () => {
     this.setState(prevState => ({
