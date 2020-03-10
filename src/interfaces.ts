@@ -4,7 +4,7 @@ export interface ComponentProps {
 }
 
 export interface ProviderState {
-  component?: React.ReactType<ComponentProps>;
+  component: React.ReactType<ComponentProps> | null;
   showModal: Function;
   hideModal: Function;
   modalProps: Object;
