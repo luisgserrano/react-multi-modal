@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Interfaces
-import { ComponentProps, ProviderState, ShowModalParams } from '../interfaces';
+import { ProviderState, ShowModalParams } from '../interfaces';
 
 export const ModalContext = React.createContext<ProviderState>({
   component: null,
