@@ -10,9 +10,8 @@
     "modals",
     "dialog"
   ],
-  "main": "dist/react-multi-modal.umd.js",
-  "module": "dist/react-multi-modal.es5.js",
-  "typings": "dist/types/react-multi-modal.d.ts",
+  "main": "build/index.js",
+  "module": "build/index.esm.js",
   "files": [
     "dist"
   ],
@@ -31,8 +30,8 @@
   "scripts": {
     "lint": "tslint  --project tsconfig.json -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
     "prebuild": "rimraf dist",
-    "dev": "parcel ./public/index.html",
-    "build": "tsc --module commonjs && rollup -c rollup.config.ts && typedoc --out docs --target es6 --theme minimal --mode file src",
+    "dev": "parcel ./examples/with-multiple-modals/index.html",
+    "build": "rollup -c rollup.config.ts",
     "start": "rollup -c rollup.config.ts -w",
     "test": "jest --coverage",
     "test:watch": "jest --coverage --watch",
