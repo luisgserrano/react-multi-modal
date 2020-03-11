@@ -13,7 +13,7 @@
   "main": "build/index.js",
   "module": "build/index.esm.js",
   "files": [
-    "dist"
+    "build"
   ],
   "author": {
     "name": "Luis Serrano",
