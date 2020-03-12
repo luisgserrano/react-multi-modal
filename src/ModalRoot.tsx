@@ -9,8 +9,8 @@ import { ModalContext } from './context/Provider';
  * render what the user sets in the context and provide the necessary props from the user.
  */
 const ModalRoot: React.FC<{}> = () => {
-  const { component: Component, hideModal, modalProps } = React.useContext(ModalContext);
-  return Component && <Component {...modalProps} hideModal={hideModal} onCancel={hideModal} />;
+  const { component: Component, isOpen, onHide, modalProps } = React.useContext(ModalContext);
+  return Component && <Component {...modalProps} isOpen={isOpen} onHide={onHide} />;
 };
 
 export default ModalRoot;

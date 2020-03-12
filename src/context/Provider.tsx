@@ -6,7 +6,8 @@ import { ProviderState, ShowModalParams } from '../interfaces';
 export const ModalContext = React.createContext<ProviderState>({
   component: null,
   showModal: () => {},
-  hideModal: () => {},
+  onHide: () => {},
+  isOpen: false,
   modalProps: {},
 });
 
@@ -21,7 +22,8 @@ class ModalProvider extends React.Component<{}, ProviderState> {
   showModal = ({ component, modalProps = {} }: ShowModalParams) => {
     this.setState({
       component,
-      modalProps: { ...modalProps, visible: true },
+      modalProps,
+      isOpen: true,
     });
   };
 
@@ -30,19 +32,18 @@ class ModalProvider extends React.Component<{}, ProviderState> {
    * would render null on the leave state.
    *
    * Instead of setting the component state to null to hide the modal component, we change the
-   * visible prop so the modal implementation handle and animate the leave state, if the user wants.
+   * isOpen prop so the modal implementation handle and animate the leave state, if the user wants.
    */
-  hideModal = () => {
-    this.setState(prevState => ({
-      modalProps: { ...prevState.modalProps, visible: false },
-    }));
+  onHide = () => {
+    this.setState({ isOpen: false });
   };
 
   state = {
     component: null,
     modalProps: {},
     showModal: this.showModal,
-    hideModal: this.hideModal,
+    onHide: this.onHide,
+    isOpen: false,
   };
 
   render() {
