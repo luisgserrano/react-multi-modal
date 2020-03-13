@@ -6,7 +6,7 @@ import { ProviderState, ShowModalParams } from '../interfaces';
 export const ModalContext = React.createContext<ProviderState>({
   component: null,
   showModal: () => {},
-  onHide: () => {},
+  hideModal: () => {},
   isOpen: false,
   modalProps: {},
 });
@@ -34,7 +34,7 @@ class ModalProvider extends React.Component<{}, ProviderState> {
    * Instead of setting the component state to null to hide the modal component, we change the
    * isOpen prop so the modal implementation handle and animate the leave state, if the user wants.
    */
-  onHide = () => {
+  hideModal = () => {
     this.setState({ isOpen: false });
   };
 
@@ -42,7 +42,7 @@ class ModalProvider extends React.Component<{}, ProviderState> {
     component: null,
     modalProps: {},
     showModal: this.showModal,
-    onHide: this.onHide,
+    hideModal: this.hideModal,
     isOpen: false,
   };
 

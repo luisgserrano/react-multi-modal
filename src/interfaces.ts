@@ -2,7 +2,7 @@ export interface ComponentProps {
   /**
    * This function makes sure the modal will close.
    */
-  onHide: Function;
+  hideModal: Function;
 
   /**
    * Boolean value that holds the visibility state of the modal.
@@ -26,7 +26,7 @@ export interface ProviderState {
   /**
    * This function makes sure the modal will close.
    */
-  onHide: Function;
+  hideModal: Function;
 
   /**
    * The user can use this object to pass custom props to the modal. These props will be
