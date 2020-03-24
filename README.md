@@ -46,7 +46,7 @@ import { ModalProvider, ModalRoot } from 'react-multi-modal';
 function App() {
   return (
     <>
-      <h1>I'm the title of the page</h1>
+      <h1>I am the title of the page</h1>
       <ModalProvider>
         <ComponentCallingMultipleModals />
         <ModalRoot />
@@ -150,8 +150,8 @@ function ExampleOne({ isOpen, hideModal }) {
   return (
     isOpen && (
       <div>
-        <div>Hello there, I'm a modal</div>
-        <div>I'm the body</div>
+        <div>Hello there, I am a modal</div>
+        <div>I am the body</div>
         <div>
           <button type="button" onClick={hideModal}>
             Hide me
@@ -211,8 +211,8 @@ function ExampleOne({ isOpen, hideModal }) {
   return (
     isOpen && (
       <div>
-        <div>Hello there, I'm a modal</div>
-        <div>I'm the body</div>
+        <div>Hello there, I am a modal</div>
+        <div>I am the body</div>
         <div>
           <button type="button" onClick={hideModal}>
             Hide me
@@ -228,7 +228,7 @@ function ExampleTwo({ isOpen, user }) {
 }
 
 function Sidebar() {
-  return <div>I'm a sidebar</div>;
+  return <div>I am a sidebar</div>;
 }
 
 function MainContent() {
@@ -265,7 +265,7 @@ function App() {
   return (
     <ModalProvider>
       <section>
-        I'm an example page!
+        I am an example page!
         <Sidebar />
         <MainContent />
         <ModalRoot />
