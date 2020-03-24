@@ -80,6 +80,9 @@ The `modalProps` parameter should be an `object`. Besides the props that the lib
 
 **Any component that you'll pass to the showModal method will have automatically `isOpen`, `hideModal` as props.**
 
+- **isOpen:** boolean value that holds the visibility state of the modal
+- **hideModal:** method to hide the current visibile modal
+
 ```javascript
 function ExampleModal({ isOpen, hideModal, user, modalTitle }) {
   return (
@@ -140,4 +143,134 @@ function App() {
 
 ### Using a Context.Consumer
 
+```javascript
+import { ModalContext, ModalProvider, ModalRoot } from 'react-multi-modal';
+
+function ExampleOne({ isOpen, hideModal }) {
+  return (
+    isOpen && (
+      <div>
+        <div>Hello there, I'm a modal</div>
+        <div>I'm the body</div>
+        <div>
+          <button type="button" onClick={hideModal}>
+            Hide me
+          </button>
+        </div>
+      </div>
+    )
+  );
+}
+
+function ExampleTwo({ isOpen, user }) {
+  return isOpen && <div>{user.name}</div>;
+}
+
+function App() {
+  function showExampleOneModal(showModal) {
+    showModal({
+      component: ExampleOne,
+    });
+  }
+
+  function showExampleTwoModal(showModal) {
+    showModal({
+      component: ExampleTwo,
+      modalProps: {
+        user: {
+          name: 'John Doe',
+        },
+      },
+    });
+  }
+
+  return (
+    <ModalProvider>
+      <ModalContext.Consumer>
+        {({ showModal, onHide }) => (
+          <>
+            Welcome to this test!
+            <button onClick={() => showExampleOneModal(showModal)}>show example one modal</button>
+            <button onClick={() => showExampleTwoModal(showModal)}>show example two modal</button>
+            <button onClick={onHide}>hide visible modal</button>
+            <ModalRoot />
+          </>
+        )}
+      </ModalContext.Consumer>
+    </ModalProvider>
+  );
+}
+```
+
 ### Using useContext hook
+
+```javascript
+import { ModalContext, ModalProvider, ModalRoot } from 'react-multi-modal';
+
+function ExampleOne({ isOpen, hideModal }) {
+  return (
+    isOpen && (
+      <div>
+        <div>Hello there, I'm a modal</div>
+        <div>I'm the body</div>
+        <div>
+          <button type="button" onClick={hideModal}>
+            Hide me
+          </button>
+        </div>
+      </div>
+    )
+  );
+}
+
+function ExampleTwo({ isOpen, user }) {
+  return isOpen && <div>{user.name}</div>;
+}
+
+function Sidebar() {
+  return <div>I'm a sidebar</div>;
+}
+
+function MainContent() {
+  const { showModal, hideModal } = useContext(ModalContext);
+
+  function showExampleOneModal() {
+    showModal({
+      component: ExampleOne,
+    });
+  }
+
+  function showExampleTwoModal() {
+    showModal({
+      component: ExampleTwo,
+      modalProps: {
+        user: {
+          name: 'John Doe',
+        },
+      },
+    });
+  }
+
+  return (
+    <div>
+      Welcome to the main content!
+      <button onClick={showExampleOneModal}>show example one modal</button>
+      <button onClick={showExampleTwoModal}>show example two modal</button>
+      <button onClick={onHide}>hide visible modal</button>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <ModalProvider>
+      <section>
+        I'm an example page!
+        <Sidebar />
+        <MainContent />
+        <ModalRoot />
+      </section>
+    </ModalProvider>
+  );
+}
+```
