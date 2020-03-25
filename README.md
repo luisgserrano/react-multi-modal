@@ -64,7 +64,7 @@ The `context` object provides some state and methods to manage a modal, as such:
 
 This method is responsible to change the visibility of a given modal component. It receives two arguments:
 
-##### component
+#### component
 
 It's the modal component you want to show. Example:
 
@@ -74,7 +74,7 @@ import ExampleModal from './ExampleModal';
 showModal({ component: ExampleModal });
 ```
 
-##### modalProps
+#### modalProps
 
 The `modalProps` parameter should be an `object`. Besides the props that the library already provides to handle the visibility of the modal (`isOpen`, `hideModal`), the `modalProps` object will be destructured as props into your modal component. This approach makes it possible to pass whatever props you need to your custom modal component. Example:
 
