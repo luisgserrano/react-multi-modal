@@ -34,6 +34,10 @@ The common case is to create a variable in the state to hold the visibility of a
 
 React multi modal is based on the react context API and it gives a `Provider` component, a `context` object and a `root` component where all the modals will be rendered.
 
+### ModalRoot component
+
+The `ModalRoot` component will render any component you pass in the `showModal` method and it acts like a placeholder. As such, you can render this component wherever you want in the tree, as long it's under the provider.
+
 ### Provider component
 
 This component abstracts the definition of the context provider and uses the provider pattern. The logic behind showing/hiding a modal is in this component.
@@ -45,13 +49,13 @@ import { ModalProvider, ModalRoot } from 'react-multi-modal';
 
 function App() {
   return (
-    <>
+    <div>
       <h1>I am the title of the page</h1>
       <ModalProvider>
         <ComponentCallingMultipleModals />
         <ModalRoot />
       </ModalProvider>
-    </>
+    </div>
   );
 }
 ```
