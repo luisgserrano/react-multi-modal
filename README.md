@@ -30,7 +30,48 @@ import { ModalProvider, ModalContext, ModalRoot } from 'react-multi-modal';
 
 React multi modal was created to help the developer manage multiple modals in one page.
 
-The common case is to create a variable in the state to hold the visibility of a modal and methods to show and hide this modal. The problem is when we have multiple modals in one page and we need to handle the visibility of all modals. The consequence is we end up duplicating a lot of code.
+The common case is to create a variable in the state to save the visibility and methods to show and hide a modal. The problem is when we have multiple modals in one page and we need to handle the visibility of all modals. The consequence is we end up duplicating a lot of code.
+
+An example:
+
+```javascript
+import React from 'react';
+
+// Components
+import ModalOne from './ModalOne';
+import ModalTwo from './ModalTwo';
+
+function App() {
+  const [modalOneIsOpen, setModalOneIsOpen] = React.useState(false);
+  const [modalTwoIsOpen, setModalTwoIsOpen] = React.useState(false);
+
+  function showModalOne() {
+    setModalOneIsOpen(true);
+  }
+
+  function showModalTwo() {
+    setModalTwoIsOpen(true);
+  }
+
+  function hideModalOne() {
+    setModalOneIsOpen(false);
+  }
+
+  function hideModalTwo() {
+    setModalTwoIsOpen(false);
+  }
+
+  return (
+    <div>
+      Welcome to this test!
+      <button onClick={showModalOne}>show modal one</button>
+      <button onClick={showModalTwo}>show modal two</button>
+      <ModalOne isOpen={modalOneIsOpen} onHide={hideModalOne} />
+      <ModalTwo isOpen={modalTwoIsOpen} onHide={hideModalTwo} />
+    </div>
+  );
+}
+```
 
 React multi modal is based on the react context API and it gives a `Provider` component, a `context` object and a `root` component where all the modals will be rendered.
 
