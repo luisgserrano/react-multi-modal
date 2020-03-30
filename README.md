@@ -250,6 +250,7 @@ function App() {
 ### Using useContext hook
 
 ```javascript
+import React from 'react';
 import { ModalContext, ModalProvider, ModalRoot } from 'react-multi-modal';
 
 function ExampleOne({ isOpen, hideModal }) {
