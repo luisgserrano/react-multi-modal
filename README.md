@@ -66,8 +66,8 @@ function App() {
       Welcome to this test!
       <button onClick={showModalOne}>show modal one</button>
       <button onClick={showModalTwo}>show modal two</button>
-      <ModalOne isOpen={modalOneIsOpen} onHide={hideModalOne} />
-      <ModalTwo isOpen={modalTwoIsOpen} onHide={hideModalTwo} />
+      <ModalOne isOpen={modalOneIsOpen} hideModal={hideModalOne} />
+      <ModalTwo isOpen={modalTwoIsOpen} hideModal={hideModalTwo} />
     </div>
   );
 }
@@ -169,12 +169,12 @@ function App() {
   return (
     <ModalProvider>
       <ModalContext.Consumer>
-        {({ showModal, onHide }) => (
+        {({ showModal, hideModal }) => (
           <>
             Welcome to this test!
             <button onClick={() => showModal({ component: ModalOne })}>show modal</button>
             <button onClick={() => showModal({ component: ModalTwo })}>show modal</button>
-            <button onClick={onHide}>hide modal</button>
+            <button onClick={hideModal}>hide modal</button>
             <ModalRoot />
           </>
         )}
@@ -232,12 +232,12 @@ function App() {
   return (
     <ModalProvider>
       <ModalContext.Consumer>
-        {({ showModal, onHide }) => (
+        {({ showModal, hideModal }) => (
           <>
             Welcome to this test!
             <button onClick={() => showExampleOneModal(showModal)}>show example one modal</button>
             <button onClick={() => showExampleTwoModal(showModal)}>show example two modal</button>
-            <button onClick={onHide}>hide visible modal</button>
+            <button onClick={hideModal}>hide visible modal</button>
             <ModalRoot />
           </>
         )}
@@ -277,7 +277,7 @@ function Sidebar() {
 }
 
 function MainContent() {
-  const { showModal, hideModal } = useContext(ModalContext);
+  const { showModal, hideModal } = React.useContext(ModalContext);
 
   function showExampleOneModal() {
     showModal({
@@ -301,8 +301,8 @@ function MainContent() {
       Welcome to the main content!
       <button onClick={showExampleOneModal}>show example one modal</button>
       <button onClick={showExampleTwoModal}>show example two modal</button>
-      <button onClick={onHide}>hide visible modal</button>
-    </>
+      <button onClick={hideModal}>hide visible modal</button>
+    </div>
   );
 }
 
