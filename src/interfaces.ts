@@ -26,7 +26,7 @@ export interface ProviderState {
   /**
    * This function makes sure the modal will close.
    */
-  hideModal: Function;
+  hideModal: (event: React.MouseEvent) => void;
 
   /**
    * The user can use this object to pass custom props to the modal. These props will be

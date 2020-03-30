@@ -5,8 +5,8 @@ import { ProviderState, ShowModalParams } from '../interfaces';
 
 export const ModalContext = React.createContext<ProviderState>({
   component: null,
-  showModal: () => {},
-  hideModal: () => {},
+  showModal: null,
+  hideModal: null,
   isOpen: false,
   modalProps: {},
 });
